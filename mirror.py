@@ -73,7 +73,7 @@ def mirror_pr(upstream, downstream, pr_id):
                   f"{config.mirror_branch_prefix}{pr_id}"], stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
 
 		logger.info("Creating pull request.")
-		result = downstream._Repository__create_pull(title=f"{config.mirror_pr_title_prefix}{original_pull.title}",
+		result = downstream.create_pull(title=f"{config.mirror_pr_title_prefix}{original_pull.title}",
                                                body=f"Original PR: {original_pull.html_url}\n-----\n{original_pull.body}",
                                                base="master",
                                                head=f"{config.mirror_branch_prefix}{pr_id}",
